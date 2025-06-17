@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulación Binomial Negativa - Inspección de Calidad</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Inspección de Calidad - Distribución Binomial Negativa</h1>
+      <button id="darkModeToggle">🌙/☀️</button>
+    </header>
+
+    <section class="factory-line">
+      <h2>Cinta Transportadora</h2>
+      <div class="belt-container">
+        <div class="belt" id="belt"></div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="input-group">
+        <label for="input-r" title="Número de defectuosas requeridas">Defectuosas necesarias (r):</label>
+        <input type="number" id="input-r" value="5" min="1">
+      </div>
+      <div class="input-group">
+        <label for="input-p" title="Probabilidad de que una pieza sea defectuosa">Probabilidad de defecto (p):</label>
+        <input type="number" id="input-p" value="0.02" step="0.01" min="0" max="1">
+      </div>
+      <div class="input-group">
+        <label for="input-nsim" title="Número de simulaciones">N° Simulaciones Monte Carlo:</label>
+        <input type="number" id="input-nsim" value="10000" min="100">
+      </div>
+      <div class="btn-group">
+        <button id="btn-calc">Calcular Teórico</button>
+        <button id="btn-sim">Simular</button>
+        <button id="btn-reset">Reiniciar Página</button>
+        <button id="btn-export">Exportar CSV</button>
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="card">
+        <h2>Resultado Teórico</h2>
+        <p>Media Esperada: <span id="theo-mean">–</span></p>
+        <p>Desviación Estándar: <span id="theo-std">–</span></p>
+      </div>
+      <div class="card">
+        <h2>Resultado Simulado</h2>
+        <p>Media Simulada: <span id="sim-mean">–</span></p>
+      </div>
+    </section>
+
+    <section class="chart-container">
+      <canvas id="pmfChart"></canvas>
+    </section>
+
+    <section class="history">
+      <h2>Historial de Simulaciones</h2>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Media Simulada</th><th>Simulaciones</th></tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </section>
+
+    <footer><small>&copy; 2025 Calidad Industrial</small></footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
